@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Toonify</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="image_view_desc">Browse samples</string>
+    <string name="camera_btn_str">Camera</string>
+    <string name="gallery_btn_str">Gallery</string>
+    <string name="save_btn_str">Save</string>
+    <string name="info_message">Choose an action!</string>
+    <string name="info_processing">Processing image&#8230;</string>
+    <string name="info_saved">Saved image:</string>
+    <string name="info_process_complete">Done!</string>
+    <string name="title_message">Welcome to Toonify!</string>
+    
+    <string name="toonify_message">You can take a picture with the camera (not yet supported), process a picture from the gallery,
+        and save any processed images you like (not yet supported)! The cartoon effect is achieved by filtering the color image to homogenize the different color 
+        regions, quantizing the colors, and then drawing the outlines from edge detection.</string>
+
+</resources>
