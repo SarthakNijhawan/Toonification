@@ -6,14 +6,14 @@ import matplotlib.pyplot as plt
 
 img_path = os.path.abspath(sys.argv[1])
 
-def edge_stage(img):
+def edge_stage(img_path):
 	"Process the image and returns an image with the edges of the input."
-	grayscale = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+	grayscale = cv2.imread(img_path, 0)
 	median = cv2.medianBlur(grayscale, 5)
 	edges = cv2.Canny(median, 100, 200)
 	kernel = np.ones((2,2),np.uint8)
 	dilated_img = cv2.dilate(edges, kernel, iterations=1)
-	ret, threshold = cv2.threshold(dilated_img, 10, 255, cv2.THRESH_BINARY)
+	ret, threshold = cv2.threshold(dilated_img, 10, 255, cv2.THRESH_BINARY_INV)
 	return [grayscale, median, edges, dilated_img, threshold], ["grayscale", "median", "edges", "dilated_img", "threshold"]
 
 def color_stage(img):
@@ -35,7 +35,7 @@ def recombine(edge_img, color_img):
 if __name__=="__main__":
 	input_img = cv2.imread(img_path, 1)
 	print("The size of the input image is {}".format(input_img.shape))	
-	edge_steps, edge_titles = edge_stage(input_img)
+	edge_steps, edge_titles = edge_stage(img_path)
 	color_steps, color_titles = color_stage(input_img)
 	toon_img = recombine(edge_steps[-1], color_steps[-1])
 	
